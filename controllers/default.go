@@ -13,7 +13,3 @@ func (c *MainController) Get() {
 	c.Data["Email"] = "astaxie@gmail.com"
 	c.TplName = "index.tpl"
 }
-
-func (c *MainController) Hello() {
-	c.Ctx.WriteString("Hello world!")
-}
