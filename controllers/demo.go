@@ -15,7 +15,7 @@ type DemoController struct {
 
 func (c *DemoController) Hello() {
 	loadConfig()
-	c.Ctx.WriteString("Hello demo!")
+	c.Ctx.WriteString("Hello, " + c.GetString("name", "Kitty"))
 }
 
 func loadConfig() {
