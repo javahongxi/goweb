@@ -9,31 +9,50 @@ type UserController struct {
 	beego.Controller
 }
 
-func Add(c *UserController) error {
+func (c *UserController) Add() {
 	age, _ := c.GetInt16("age")
 	user := models.User{
 		Name: c.GetString("name"),
 		Age:  age,
 	}
-	return models.Insert(&user)
+	err := models.Insert(&user)
+	if err != nil {
+		c.Ctx.WriteString("op success")
+	} else {
+		c.Ctx.WriteString("op failed")
+	}
 }
 
-func Delete(c *UserController) error {
+func (c *UserController) Delete() {
 	id, _ := c.GetInt("id")
-	return models.Delete(id)
+	err := models.Delete(id)
+	if err != nil {
+		c.Ctx.WriteString("op success")
+	} else {
+		c.Ctx.WriteString("op failed")
+	}
 }
 
-func Update(c *UserController) error {
+func (c *UserController) Update() {
 	age, _ := c.GetInt16("age")
 	user := models.User{
 		Name: c.GetString("name"),
 		Age:  age,
 	}
-	return models.Update(&user)
+	err := models.Update(&user)
+	if err != nil {
+		c.Ctx.WriteString("op success")
+	} else {
+		c.Ctx.WriteString("op failed")
+	}
 }
 
-func Find(c *UserController) models.User {
+func (c *UserController) Find() {
 	id, _ := c.GetInt("id")
-	user, _ := models.Select(id)
-	return user
+	user, err := models.Select(id)
+	if err != nil {
+		c.Ctx.WriteString("op success")
+	} else {
+		c.Ctx.WriteString(user.Name)
+	}
 }
