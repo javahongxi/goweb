@@ -10,13 +10,16 @@ type UserController struct {
 }
 
 func (c *UserController) Add() {
-	age, _ := c.GetInt16("age")
+	gender, _ := c.GetUint8("gender")
+	age, _ := c.GetUint16("age")
 	user := models.User{
-		Name: c.GetString("name"),
-		Age:  age,
+		Username: c.GetString("username"),
+		Nickname: c.GetString("nickname"),
+		Gender:   gender,
+		Age:      age,
 	}
-	err := models.Insert(&user)
-	if err != nil {
+	err := models.InsertUser(&user)
+	if err == nil {
 		c.Ctx.WriteString("op success")
 	} else {
 		c.Ctx.WriteString("op failed")
@@ -24,9 +27,9 @@ func (c *UserController) Add() {
 }
 
 func (c *UserController) Delete() {
-	id, _ := c.GetInt("id")
-	err := models.Delete(id)
-	if err != nil {
+	id, _ := c.GetUint64("id")
+	err := models.DeleteUser(id)
+	if err == nil {
 		c.Ctx.WriteString("op success")
 	} else {
 		c.Ctx.WriteString("op failed")
@@ -34,13 +37,17 @@ func (c *UserController) Delete() {
 }
 
 func (c *UserController) Update() {
-	age, _ := c.GetInt16("age")
-	user := models.User{
-		Name: c.GetString("name"),
-		Age:  age,
+	id, _ := c.GetUint64("id")
+	user := models.User{Id: id}
+	if username := c.GetString("username"); username != "" {
+		user.Username = username
 	}
-	err := models.Update(&user)
-	if err != nil {
+	if nickname := c.GetString("nickname"); nickname != "" {
+		user.Nickname = nickname
+	}
+
+	err := models.UpdateUser(&user)
+	if err == nil {
 		c.Ctx.WriteString("op success")
 	} else {
 		c.Ctx.WriteString("op failed")
@@ -48,11 +55,15 @@ func (c *UserController) Update() {
 }
 
 func (c *UserController) Find() {
-	id, _ := c.GetInt("id")
-	user, err := models.Select(id)
-	if err != nil {
-		c.Ctx.WriteString("op success")
+	id, _ := c.GetUint64("id")
+	user, err := models.SelectUser(id)
+	if err == nil {
+		if &user == nil {
+			c.Ctx.WriteString("no user")
+		} else {
+			c.Ctx.WriteString(user.Nickname)
+		}
 	} else {
-		c.Ctx.WriteString(user.Name)
+		c.Ctx.WriteString("op failed")
 	}
 }
