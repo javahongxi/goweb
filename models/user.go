@@ -21,7 +21,7 @@ func init() {
 
 func InsertUser(user *User) error {
 	o := orm.NewOrm()
-	_, err := o.Insert(&user)
+	_, err := o.Insert(user)
 	return err
 }
 
