@@ -58,12 +58,8 @@ func (c *UserController) Find() {
 	id, _ := c.GetUint64("id")
 	user, err := models.SelectUser(id)
 	if err == nil {
-		if &user == nil {
-			c.Ctx.WriteString("no user")
-		} else {
-			c.Ctx.WriteString(user.Nickname)
-		}
+		c.Ctx.WriteString(user.Nickname)
 	} else {
-		c.Ctx.WriteString("op failed")
+		c.Ctx.WriteString("no user")
 	}
 }

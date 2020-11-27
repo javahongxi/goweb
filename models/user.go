@@ -28,7 +28,7 @@ func InsertUser(user *User) error {
 func DeleteUser(id uint64) error {
 	user := User{Id: id}
 	o := orm.NewOrm()
-	_, err := o.Insert(&user)
+	_, err := o.Delete(&user)
 	return err
 }
 
