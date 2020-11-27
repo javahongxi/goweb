@@ -34,7 +34,7 @@ func DeleteUser(id uint64) error {
 
 func UpdateUser(user *User) error {
 	o := orm.NewOrm()
-	_, err := o.Update(&user)
+	_, err := o.Update(user)
 	return err
 }
 
