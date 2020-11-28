@@ -4,7 +4,7 @@
 <head>
   <title>Beego</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="shortcut icon" href="../static/img/red.jpeg" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/red.jpeg" type="image/x-icon" />
 
   <style type="text/css">
     *,body {
@@ -28,7 +28,7 @@
     }
 
     .logo {
-      background-image: url('../static/img/red.jpeg');
+      background-image: url('/static/img/red.jpeg');
       background-repeat: no-repeat;
       -webkit-background-size: 100px 100px;
       background-size: 100px 100px;
