@@ -10,6 +10,7 @@ func init() {
 
 	beego.Router("/hello", &controllers.DemoController{}, "get:Hello")
 
+	beego.Router("/user/hello", &controllers.UserController{}, "get:Hello")
 	beego.Router("/user/add", &controllers.UserController{}, "get:Add")
 	beego.Router("/user/delete", &controllers.UserController{}, "get:Delete")
 	beego.Router("/user/update", &controllers.UserController{}, "get:Update")

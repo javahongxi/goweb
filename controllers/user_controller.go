@@ -9,6 +9,10 @@ type UserController struct {
 	beego.Controller
 }
 
+func (c *UserController) Hello() {
+	c.Ctx.WriteString("Hello, " + c.GetString("name", "Kitty"))
+}
+
 func (c *UserController) Add() {
 	gender, _ := c.GetUint8("gender")
 	age, _ := c.GetUint16("age")
