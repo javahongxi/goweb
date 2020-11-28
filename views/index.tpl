@@ -4,7 +4,7 @@
 <head>
   <title>Beego</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link rel="shortcut icon" href="https://avatars1.githubusercontent.com/u/8650304?s=460&u=a5b20f748563b6d7435660b966fbfcae71b7adf5&v=4" type="image/x-icon" />
+  <link rel="shortcut icon" href="../static/img/red.jpeg" type="image/x-icon" />
 
   <style type="text/css">
     *,body {
@@ -28,7 +28,7 @@
     }
 
     .logo {
-      background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606410049481&di=ec655eb6c998a0fa989e41e7bfda999d&imgtype=0&src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ffd%2Ftg%2Fg2%2FM07%2F4B%2F43%2FCghzgFUefzGAErBYAADMPPSLGz0182.jpg');
+      background-image: url('../static/img/red.jpeg');
       background-repeat: no-repeat;
       -webkit-background-size: 100px 100px;
       background-size: 100px 100px;
