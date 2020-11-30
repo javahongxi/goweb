@@ -1,6 +1,6 @@
 module goweb
 
-go 1.13
+go 1.15
 
 require (
 	github.com/astaxie/beego v1.12.3
@@ -13,7 +13,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/mapstructure v1.4.0 // indirect
 	github.com/pelletier/go-toml v1.8.1 // indirect
-	github.com/peterh/liner v1.2.0 // indirect
+	github.com/peterh/liner v1.2.1 // indirect
 	github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18 // indirect
 	github.com/sirupsen/logrus v1.7.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4
