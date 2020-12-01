@@ -18,6 +18,10 @@ func (c *DemoController) Hello() {
 	c.Ctx.WriteString("Hello, " + c.GetString("name", "Kitty"))
 }
 
+func (c *DemoController) Hi() {
+	c.Ctx.WriteString("Hi, " + c.GetString("name", "Kitty"))
+}
+
 func loadConfig() {
 	err := beego.LoadAppConfig("ini", ConfigFile)
 	if err != nil {
