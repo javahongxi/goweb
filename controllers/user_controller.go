@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	result "goweb/common"
 	"goweb/models"
 )
 
@@ -23,21 +24,29 @@ func (c *UserController) Add() {
 		Age:      age,
 	}
 	err := models.InsertUser(&user)
+
+	var r result.Result
 	if err == nil {
-		c.Ctx.WriteString("op success")
+		r = result.Result{}
 	} else {
-		c.Ctx.WriteString("op failed")
+		r = result.Error(500, err.Error())
 	}
+	c.Data["json"] = &r
+	c.ServeJSON()
 }
 
 func (c *UserController) Delete() {
 	id, _ := c.GetUint64("id")
 	err := models.DeleteUser(id)
+
+	var r result.Result
 	if err == nil {
-		c.Ctx.WriteString("op success")
+		r = result.Result{}
 	} else {
-		c.Ctx.WriteString("op failed")
+		r = result.Error(500, err.Error())
 	}
+	c.Data["json"] = &r
+	c.ServeJSON()
 }
 
 func (c *UserController) Update() {
@@ -51,19 +60,27 @@ func (c *UserController) Update() {
 	}
 
 	err := models.UpdateUser(&user)
+
+	var r result.Result
 	if err == nil {
-		c.Ctx.WriteString("op success")
+		r = result.Result{}
 	} else {
-		c.Ctx.WriteString("op failed")
+		r = result.Error(500, err.Error())
 	}
+	c.Data["json"] = &r
+	c.ServeJSON()
 }
 
 func (c *UserController) Find() {
 	id, _ := c.GetUint64("id")
 	user, err := models.SelectUser(id)
+
+	var r result.Result
 	if err == nil {
-		c.Ctx.WriteString(user.Nickname)
+		r = result.Success(&user)
 	} else {
-		c.Ctx.WriteString("no user")
+		r = result.Error(500, err.Error())
 	}
+	c.Data["json"] = &r
+	c.ServeJSON()
 }
