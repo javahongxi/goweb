@@ -1,8 +1,9 @@
 package controllers
 
 import (
+	"encoding/json"
 	"github.com/astaxie/beego"
-	result "goweb/common"
+	"goweb/common/result"
 	"goweb/models"
 )
 
@@ -22,10 +23,8 @@ func (c *UserController) Hello() {
 	c.Ctx.WriteString("Hello, " + c.GetString("name", "Kitty"))
 }
 
+// form-data demo
 func (c *UserController) Add() {
-	//gender, _ := c.GetUint8("gender")
-	//age, _ := c.GetUint16("age")
-
 	var r result.Result
 	userParam := userParam{}
 	var err error
@@ -62,17 +61,13 @@ func (c *UserController) Delete() {
 	c.ServeJSON()
 }
 
+// json body demo
 func (c *UserController) Update() {
-	id, _ := c.GetUint64("id")
-	user := models.User{Id: id}
-	if username := c.GetString("username"); username != "" {
-		user.Username = username
+	var user models.User
+	var err error
+	if err = json.Unmarshal(c.Ctx.Input.RequestBody, &user); err == nil {
+		err = models.UpdateUser(&user)
 	}
-	if nickname := c.GetString("nickname"); nickname != "" {
-		user.Nickname = nickname
-	}
-
-	err := models.UpdateUser(&user)
 
 	var r result.Result
 	if err == nil {
