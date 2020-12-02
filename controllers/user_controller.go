@@ -10,22 +10,35 @@ type UserController struct {
 	beego.Controller
 }
 
+type userParam struct {
+	Id       uint64 `form:"id"`
+	Username string `form:"username"`
+	Nickname string `form:"nickname"`
+	Gender   uint8  `form:"gender"`
+	Age      uint16 `form:"age"`
+}
+
 func (c *UserController) Hello() {
 	c.Ctx.WriteString("Hello, " + c.GetString("name", "Kitty"))
 }
 
 func (c *UserController) Add() {
-	gender, _ := c.GetUint8("gender")
-	age, _ := c.GetUint16("age")
-	user := models.User{
-		Username: c.GetString("username"),
-		Nickname: c.GetString("nickname"),
-		Gender:   gender,
-		Age:      age,
-	}
-	err := models.InsertUser(&user)
+	//gender, _ := c.GetUint8("gender")
+	//age, _ := c.GetUint16("age")
 
 	var r result.Result
+	userParam := userParam{}
+	var err error
+	if err = c.ParseForm(&userParam); err == nil {
+		user := models.User{
+			Username: userParam.Username,
+			Nickname: userParam.Nickname,
+			Gender:   userParam.Gender,
+			Age:      userParam.Age,
+		}
+		err = models.InsertUser(&user)
+	}
+
 	if err == nil {
 		r = result.Result{}
 	} else {
