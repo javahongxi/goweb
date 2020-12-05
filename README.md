@@ -1,7 +1,10 @@
 # goweb
 ```
 git clone https://github.com/javahongxi/goweb.git
+cd goweb
 go get ./...
+go run main.go
+http://localhost:8080
 ```
 
 ### About GoWeb
