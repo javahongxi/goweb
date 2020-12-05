@@ -1,6 +1,6 @@
 # goweb
-
-`go get -u github.com/javahongxi/goweb`
+`git clone https://github.com/javahongxi/goweb.git` <br>
+`go get ./...`
 
 ### About GoWeb
 用 beego 开发 Web 项目
