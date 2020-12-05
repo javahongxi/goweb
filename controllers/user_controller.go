@@ -3,8 +3,8 @@ package controllers
 import (
 	"encoding/json"
 	"github.com/astaxie/beego"
-	"goweb/common/result"
-	"goweb/models"
+	"github.com/javahongxi/goweb/common/result"
+	"github.com/javahongxi/goweb/models"
 )
 
 type UserController struct {

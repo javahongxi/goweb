@@ -1,7 +1,7 @@
 package test
 
 import (
-	_ "goweb/routers"
+	_ "github.com/javahongxi/goweb/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
