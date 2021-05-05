@@ -16,4 +16,4 @@ go clone https://github.com/astaxie/beego
 go get -u github.com/beego/bee
 ```
 
-&copy; [hongxi.org](http://hongxi.org) | [web.hongxi.org](http://web.hongxi.org)
+&copy; [hongxi.org](http://hongxi.org)
